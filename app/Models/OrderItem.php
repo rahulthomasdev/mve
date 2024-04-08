@@ -13,7 +13,10 @@ class OrderItem extends Model
         'product_id',
         'quantity',
         'unit_price',
+        'vendor_order_id',
     ];
+
+    protected $primaryKey = 'order_item_id';
 
     /**
      * Get the order that owns the order item.
@@ -29,5 +32,10 @@ class OrderItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function vendorOrder()
+    {
+        return $this->belongsTo(VendorOrder::class);
     }
 }

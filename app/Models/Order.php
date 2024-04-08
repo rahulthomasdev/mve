@@ -24,6 +24,10 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function vendorOrders()
+    {
+        return $this->hasMany(VendorOrder::class);
+    }
 
     protected static function boot()
     {
