@@ -31,23 +31,36 @@ class VendorOrderResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('vendor_order_no')
                     ->required()
-                    ->default(OrderUtility::class::generateUniqueOrderNumber('MVE-V-')),
+                    ->default(OrderUtility::class::generateUniqueOrderNumber('MVE-V-'))
+                    ->disabledOn('edit'),
                 Forms\Components\Select::make('order_id')
                     ->label('Order no')
                     ->required()
-                    ->options(Order::pluck('order_no', 'id')->all()),
+                    ->options(Order::pluck('order_no', 'id')->all())
+                    ->disabledOn('edit'),
                 Forms\Components\TextInput::make('shipping_address')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->disabledOn('edit'),
                 Forms\Components\TextInput::make('shipping_method')
                     ->required()
                     ->maxLength(255)
-                    ->default('Free'),
-                Forms\Components\DatePicker::make('expected_delivery_date'),
-                Forms\Components\TextInput::make('status')
+                    ->default('Free')
+                    ->disabledOn('edit'),
+                Forms\Components\DatePicker::make('expected_delivery_date')
+                    ->disabledOn('edit'),
+                Forms\Components\Select::make('status')
                     ->required()
-                    ->maxLength(255)
-                    ->default('pending'),
+                    ->default('pending')
+                    ->options([
+                        'pending' => 'Pending',
+                        'processing' => 'Processing',
+                        'shipped' => 'Shipped',
+                        'canceled' => 'Canceled',
+                        'delivered' => 'Delivered',
+                        'refunded' => 'Refunded',
+                        'returned' => 'Returned',
+                    ]),
             ]);
     }
 
@@ -69,7 +82,17 @@ class VendorOrderResource extends Resource
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->searchable()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'processing' => 'gray',
+                        'shipped' => 'info',
+                        'canceled' => 'danger',
+                        'delivered' => 'success',
+                        'refunded' => 'info',
+                        'returned' => 'info',
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -105,6 +128,7 @@ class VendorOrderResource extends Resource
             'index' => Pages\ListVendorOrders::route('/'),
             'create' => Pages\CreateVendorOrder::route('/create'),
             'edit' => Pages\EditVendorOrder::route('/{record}/edit'),
+            'view' => Pages\ViewVendorOrder::route('/{record}'),
         ];
     }
 

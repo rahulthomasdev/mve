@@ -33,10 +33,8 @@ class OrderResource extends Resource
                     ->default('pending')
                     ->options([
                         'pending' => 'Pending',
-                        'placed' => 'Placed',
-                        'transit' => 'In transit',
-                        'cancelled' => 'Cancelled',
-                        'delivered' => 'Delivered'
+                        'inprogress' => 'Inprogress',
+                        'completed' => 'Completed'
                     ]),
                 Forms\Components\Textarea::make('shipping_address')
                     ->required()

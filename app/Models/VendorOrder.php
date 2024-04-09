@@ -33,4 +33,20 @@ class VendorOrder extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    protected static  function boot()
+    {
+        parent::boot();
+        static::updated(function ($vendorOrder) {
+            if ($vendorOrder->isDirty('status') && $vendorOrder->status == 'delivered') {
+                $order = $vendorOrder->order()->first();
+                if ($order) {
+                    $allDelivered = $order->vendorOrders()->where('status', '!=', 'delivered')->count() == 0;
+                    if ($allDelivered) {
+                        $order->update(['status' => 'complete']);
+                    }
+                }
+            }
+        });
+    }
 }

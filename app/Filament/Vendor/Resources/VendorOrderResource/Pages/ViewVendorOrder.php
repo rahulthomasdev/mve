@@ -4,16 +4,9 @@ namespace App\Filament\Vendor\Resources\VendorOrderResource\Pages;
 
 use App\Filament\Vendor\Resources\VendorOrderResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditVendorOrder extends EditRecord
+class ViewVendorOrder extends ViewRecord
 {
     protected static string $resource = VendorOrderResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            // Actions\DeleteAction::make(),
-        ];
-    }
 }
