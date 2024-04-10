@@ -17,10 +17,12 @@ class Product extends Model
         'price',
         'quantity',
         'images',
+        'highlight'
     ];
 
     protected $casts = [
         'images' => 'array',
+        'highlight' => 'array',
     ];
 
     /**

@@ -48,6 +48,12 @@ class ProductResource extends Resource
                     ->multiple()
                     ->image()
                     ->imageEditor(),
+                Forms\Components\Select::make('highlight')
+                    ->options([
+                        'featured' => 'Featured',
+                        'best_seller' => 'Best Seller',
+                        'best_picks' => 'Best Picks'
+                    ])->multiple(),
             ]);
     }
 
@@ -70,6 +76,13 @@ class ProductResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('images'),
+                Tables\Columns\TextColumn::make('highlight')->getStateUsing(function (Product $record) {
+                    if ($record->highlight) {
+                        return collect($record->highlight)->map(function ($highlight) {
+                            return ucfirst(str_replace('_', ' ', $highlight));
+                        })->all();
+                    }
+                }),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
