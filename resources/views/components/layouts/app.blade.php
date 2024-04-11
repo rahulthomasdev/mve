@@ -2,32 +2,28 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <!-- Basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Site Metas -->
-    <link rel="icon" href="{{asset('images/frontend/fevicon/fevicon.png')}}" type="image/gif" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>{{ $title ?? 'MVE' }}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVE</title>
 
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend/custom_bootstrap.css')}}" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{asset('css/frontend/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/frontend/slicknav.min.css')}}" type="text/css">
 
-    <!-- font awesome style -->
-    <script src="https://kit.fontawesome.com/0e40cac554.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('sass/frontend/style.css')}}" type="text/css">
 
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/frontend/style.css')}}" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="{{asset('css/frontend/responsive.css')}}" rel="stylesheet" />
-    @vite(['public/css/frontend/custom.scss', 'resources/css/app.css','resources/js/app.js'])
+    @vite(['public/sass/frontend/custom.scss', 'resources/css/app.css','resources/js/app.js'])
 
 </head>
 
