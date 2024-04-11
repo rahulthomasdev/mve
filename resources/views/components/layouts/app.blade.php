@@ -12,7 +12,6 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
     <title>{{ $title ?? 'MVE' }}</title>
 
     <!-- bootstrap core css -->
@@ -28,8 +27,8 @@
     <link href="{{asset('css/frontend/style.css')}}" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{asset('css/frontend/responsive.css')}}" rel="stylesheet" />
+    @vite(['public/css/frontend/custom.scss', 'resources/css/app.css','resources/js/app.js'])
 
-    @vite(['public/css/frontend/custom.scss'])
 </head>
 
 <body>
