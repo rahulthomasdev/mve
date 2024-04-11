@@ -23,7 +23,7 @@
                         <div class="detail-box">
                             <div class="text">
                                 <h6>
-                                    {{$product->name}}
+                                    <a href="/product/{{$product->id}}">{{$product->name}}</a>
                                 </h6>
                                 <h5>
                                     <span>$</span> {{$product->price}}
